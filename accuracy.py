@@ -1,41 +1,14 @@
 from rouge import Rouge
 ROUGE = Rouge()
-reference='''Napoleon Hill is the most famous conman you ve probably never heard of
-Born into poverty in rural Virginia at the end of the   th century  Hill went on to write one of the most successful self help books of the   th century  Think and Grow Rich
-In fact  he helped invent the genre
-But it s the untold story of Hill s fraudulent business practices  tawdry sex life  and membership in a New York cult that makes him so fascinating
-That cult would become infamous in the late     s for trying to raise an  immortal baby   But even those who know the story of Immortal Baby Jean may not know that the cult was inspired by Hill s teachings  practically using his most famous work as their holy text
-Don t worry  the whole story of Napoleon Hill only gets weirder from there
-Modern readers are probably familiar with the      sensation The Secret  but the concepts in that book were essentially plagiarized from Napoleon Hill s      classic Think and Grow Rich  which has reportedly sold over    million copies to date
-The big idea in both  The material universe is governed quite directly by our thoughts
-If you simply visualize what you want out of life  those things and more will be delivered to you
-Especially if those things involve money
-He really did live an extraordinary life  just not the life that his thousands of disciples over the years have claimed
-It s just too bad that Hill spent most of his life as an utter fraud a fraud who by hook and by crook was constantly reinventing himself      
-Napoleon Hill s Wikipedia page sometimes warns that it s written like an advertisement
-Which pretty much hits the nail on the head
-Hill s entire life was an advertisement  one that spoke of honor and taught that if people visualized their dreams and narrowed down their own purpose in life  good things would come to them
-And if the lessons in Hill s writings  work  for some people  I say good for them
-I m not here to say that there s nothing to be learned from some of Hill s writings especially those that speak of self confidence  being kind to others  and going the extra mile for something you believe in
-But the real story behind Napoleon Hill s life is long past due
-After countless hours of research  I still feel like I ve captured just a mere glimpse of the complex man that was Napoleon Hill'''
-candidate='''Napoleon Hill is the most famous conman you ve probably never heard of
-Born into poverty in rural Virginia at the end of the   th century  Hill went on to write one of the most successful self help books of the   th century  Think and Grow Rich
-In fact  he helped invent the genre
-But it s the untold story of Hill s fraudulent business practices  tawdry sex life  and membership in a New York cult that makes him so fascinating
-That cult would become infamous in the late     s for trying to raise an  immortal baby   But even those who know the story of Immortal Baby Jean may not know that the cult was inspired by Hill s teachings  practically using his most famous work as their holy text
-Don t worry  the whole story of Napoleon Hill only gets weirder from there
-Modern readers are probably familiar with the      sensation The Secret  but the concepts in that book were essentially plagiarized from Napoleon Hill s      classic Think and Grow Rich  which has reportedly sold over    million copies to date
-The big idea in both  The material universe is governed quite directly by our thoughts
-If you simply visualize what you want out of life  those things and more will be delivered to you
-Especially if those things involve money
-He really did live an extraordinary life  just not the life that his thousands of disciples over the years have claimed
-It s just too bad that Hill spent most of his life as an utter fraud a fraud who by hook and by crook was constantly reinventing himself      
-Napoleon Hill s Wikipedia page sometimes warns that it s written like an advertisement
-Which pretty much hits the nail on the head
-Hill s entire life was an advertisement  one that spoke of honor and taught that if people visualized their dreams and narrowed down their own purpose in life  good things would come to them
-And if the lessons in Hill s writings  work  for some people  I say good for them
-I m not here to say that there s nothing to be learned from some of Hill s writings especially those that speak of self confidence  being kind to others  and going the extra mile for something you believe in
-But the real story behind Napoleon Hill s life is long past due
-After countless hours of research  I still feel like I ve captured just a mere glimpse of the complex man that was Napoleon Hill'''
+reference='''In a short stock markets provides a place where market participants can make transactions of shares and other eligible investement firms, tools and products without any fear of fraud and deception with zero to low operational risk
+Operating under the defined rules as stated by the stock markets act as primary and secondary markets As primary market stock market enables companies to publish and sell their shares to investors and public through the process of an initial public offering
+This activity helps companies acquire needed funds from investors and public It essentially means that a company breaks itself into a number of shares for example thousand shares and publishes a part of those shares  say hundred shares to interested candidates at a valuation per share To help proced this process a company wants a marketplace where these shares can be sold
+If everything goes perfectly then the company will sell its shares at a price per share and collect funds Investors will get the company shares  which they can expect to hold for their preferred duration in anticipation of rise in share price and any potential income in the form of dividend payments'''
+candidate='''In a nutshell  stock markets provide a secure and regulated environment where market participants can transact in shares and other eligible financial instruments with confidence  with zero to low operational risk
+Operating under the defined rules as stated by the regulator  the stock markets act as primary markets and secondary markets   As a primary market  the stock market allows companies to issue and sell their shares to the common public for the first time through the process of an initial public offering  IPO
+This activity helps companies raise necessary capital from investors
+It essentially means that a company divides itself into a number of shares  for example     million shares  and sells a part of those shares  say    million shares  to the public at a price  for instance      per share    To facilitate this process  a company needs a marketplace where these shares can be sold
+This marketplace is provided by the stock market
+If everything goes according to plan  then the company will successfully sell the   million shares at a price of     per share and collect     million worth of funds
+Investors will get the company shares  which they can expect to hold for their preferred duration  in anticipation of rising in share price and any potential income in the form of dividend payments'''
 print(ROUGE.get_scores(candidate, reference))

@@ -17,17 +17,23 @@ import math
 def clean_text(file_name):
     file = open(file_name, "r",encoding="utf8")
     filedata = file.readlines()
-    article = filedata[0].split(". ")
+
+    
     sentences = []
     # removing special characters and extra whitespaces
-    for sentence in article:
-        sentence = re.sub('[^a-zA-Z]',' ',str(sentence))
-        sentence = re.sub('[\s+]',' ', sentence)
-        sentences.append(sentence)
-    sentences.pop()
+    for fileline in filedata:
+        article = fileline.split(".")
+        for sentence in article:
+            sentence=sentence.strip()
+            sentence = re.sub('[^a-zA-Z]',' ',str(sentence))
+            sentence = re.sub('[\s+]',' ', sentence)
+            sentences.append(sentence)
+        sentences.pop()
     display = " ".join(sentences)
-    print('Initial Text: ')
-    print(display)
+    #print('Initial Text: ')
+    display = re.sub('[\s+]',' ', display)
+    display = re.sub(' +',' ', display)
+    #print(display)
     print('\n')
     return sentences
 
@@ -117,8 +123,10 @@ def calculateSentSimilarity(sentences,tfidf,n):
         numerator = numerator + tfidf[index1].get(word,0)*tfidf[index2].get(word,0)
         deno1     = deno1     + tfidf[index1].get(word,0)*tfidf[index1].get(word,0)
         deno2     = deno2     + tfidf[index2].get(word,0)*tfidf[index2].get(word,0)
-
-      score = numerator / (math.sqrt(deno1*deno2))
+      if(deno1 and deno2):
+        score = numerator / (math.sqrt(deno1*deno2))
+      else:
+        score=0
 
       matrix[index1][index2] = score
 
@@ -153,6 +161,8 @@ def summary(sent_data):
         if(sent['score'] >= avg*0.9):
             summary.append(sent['sentence'])
     summary = ". ".join(summary)
+    summary=re.sub('[\s+]',' ', summary)
+    summary=re.sub(' +',' ', summary)
     return summary
 
 sentences = clean_text('input.txt')
@@ -231,7 +241,6 @@ def run_experiment(function_name, num_iteration):
             
         results_pos.append(best_pos)
         results.append(best)
-    
     best_all = min(results)
     best_all_pos = results_pos[results.index(best_all)]
 
@@ -256,7 +265,6 @@ def main():
             print(f"Function={function}, Iterations={num_iteration} | best={format(best, '.10f')}, best_pos={best_pos}, avg={format(avg, '.10f')}")
             ind=0
 
-            
             all_results.append([
                 function,
                 num_iteration,
@@ -287,7 +295,7 @@ def main():
             
     
     
-    data = np.array(all_results)
+    data = np.array(all_results,dtype=object)
     dataset = pd.DataFrame({
         "function": data[:, 0],
         "iterations": data[:, 1],
@@ -297,7 +305,7 @@ def main():
     })
 
     dataset.to_excel("results.xlsx")
-    print(dataset)
+    #print(dataset)
 
 if __name__ == "__main__":
     main()
