@@ -30,10 +30,10 @@ def clean_text(file_name):
             sentences.append(sentence)
         sentences.pop()
     display = " ".join(sentences)
-    #print('Initial Text: ')
+    print('Initial Text: ')
     display = re.sub('[\s+]',' ', display)
     display = re.sub(' +',' ', display)
-    #print(display)
+    print(display)
     print('\n')
     return sentences
 
@@ -120,15 +120,19 @@ def calculateSentSimilarity(sentences,tfidf,n):
       numerator,deno1,deno2 = 0,0,0
 
       for word in st:
-        numerator = numerator + tfidf[index1].get(word,0)*tfidf[index2].get(word,0)
-        deno1     = deno1     + tfidf[index1].get(word,0)*tfidf[index1].get(word,0)
-        deno2     = deno2     + tfidf[index2].get(word,0)*tfidf[index2].get(word,0)
-      if(deno1 and deno2):
-        score = numerator / (math.sqrt(deno1*deno2))
-      else:
-        score=0
+        v1=(tfidf[index1].get(word,0))
+        v2=(tfidf[index2].get(word,0))
+        if v1!=0 and v2!=0:
+            numerator = numerator + tfidf[index1].get(word,0)*tfidf[index2].get(word,0)
+        if v1!=0:
+            deno1     = deno1     + tfidf[index1].get(word,0)*tfidf[index1].get(word,0)
+        if v2!=0:
+            deno2     = deno2     + tfidf[index2].get(word,0)*tfidf[index2].get(word,0)
+        score =0
+        if(deno1 !=0 and deno2!=0):
+            score = numerator / (math.sqrt(deno1*deno2))
 
-      matrix[index1][index2] = score
+        matrix[index1][index2] = score
 
   return matrix
 
