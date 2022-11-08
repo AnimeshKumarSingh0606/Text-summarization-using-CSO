@@ -283,19 +283,21 @@ def main():
     #print(type(score_cats))
 
 
-
-    print('SUMMARY')
     print('')
+    print('SUMMARY')
+    
                         
     
     ind=0
-        
+    ans="" 
     for s,v in score_cats.items():
-            if(v>6):
-                print(sentences[ind])
+            if(v>11):
+                ans+=(sentences[ind])
+                ans+="."
 
             ind+=1        
-                
+    ans = re.sub(' +',' ', ans)
+    print(ans)           
             
     
     
