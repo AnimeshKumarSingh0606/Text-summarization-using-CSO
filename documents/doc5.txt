@@ -1,6 +1,4 @@
-from rouge import Rouge
-ROUGE = Rouge()
-reference='''WHILE Hurricane Andrew was wreaking havoc across large parts of southern
+WHILE Hurricane Andrew was wreaking havoc across large parts of southern
 Florida and Louisiana this week, a grade two dollar crisis (on a one-to-four
 scale, four being most severe) was blowing itself out at the end of a
 tumultuous few days for US and world financial markets.
@@ -56,7 +54,4 @@ rebuilding damaged or destroyed homes. Since there are an estimated 250,000
 people left homeless by the storm, there is a lot of work to be done.
 The biggest gains among construction stocks this week were posted by Lennar,
 Oakwood Homes, Engle Homes and Fleetwood, the largest maker of
-pre-manufactured homes in the US.'''
-candidate='''tumultuous few days for US and world financial markets.its lowest ever point against the D mark.currency markets for some time.tightened their respective monetary policies.also making overseas investors increasingly unhappy about holding the dollar.re election battle that only a year ago was supposed to be a shoo in for the incumbent.exchange dealers that the currency was heading in one direction down.logic for such a strongly negative reaction from bond and stock markets was less obviously compelling.possibility that rates may actually have to go up to protect the currency.around per cent and heading lower.The second explanation carries more weight.weakness makes it extremely difficult for the Fed to ease monetary policy again.economic cycle was also behind the selling in equity markets.southern Florida the area hit worst by the hurricane all took a tumble.rebuilding damaged or destroyed homes.pre manufactured homes in the US.
-'''
-print(ROUGE.get_scores(candidate, reference))
+pre-manufactured homes in the US.

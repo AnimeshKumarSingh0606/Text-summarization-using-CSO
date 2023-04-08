@@ -11,7 +11,8 @@ def rastrigin_fn(x):
 	total = 0
 
 	for i in range(len(x)):
-		total += ( x[i]**2 - 10 * (math.cos(2 * math.pi * x[i])) + 10 )
+		if((2 * math.pi * x[i])%90!=0):
+			total += ( x[i]**2 - 10 * (math.cos(2 * math.pi * x[i])) + 10 )
 	return total
 
 def griewank_fn(x):
@@ -23,7 +24,8 @@ def griewank_fn(x):
 		total1 += ( (x[i]**2 / 4000) )
 
 	for i in range(len(x)):
-		total2 *= ( math.cos(x[i] / math.sqrt(i + 1)) )
+		if((x[i] / math.sqrt(i + 1))%90!=0):
+			total2 *= ( math.cos(x[i] / math.sqrt(i + 1)) )
 
 	total = 1 + total1 - total2
 	return total

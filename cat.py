@@ -50,7 +50,11 @@ class Cat:
 		elif self.behavior == Behavior.TRACING:
 			#------TRACING------
 			r1 = random.random()
-
+			##debug
+			# print(self._dimension_size)
+			# print(len(self._velocities))
+			# print(len(self._position))
+			##debug ends
 			for idx_dim in range(self._dimension_size):
 				#Compute velocity
 				self._velocities[idx_dim] = self._velocities[idx_dim] + r1 * simulation.c1 * (best_pos[idx_dim] - self._position[idx_dim])

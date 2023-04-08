@@ -28,7 +28,7 @@ class CSO:
 			#evaluate
                         
 			for cat in cat_population:
-                                score, pos = cat.evaluate(function)
+                                score, pos = cat.evaluate(function)        ##calculating the fitness score of the cats from cost_function.py file
                                 score_cats[cat]=max(score_cats.get(cat,0),score)
 				
                                 if score < best:

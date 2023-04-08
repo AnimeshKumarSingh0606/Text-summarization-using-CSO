@@ -53,6 +53,18 @@ def count_in_sentence(sentences):
         txt_data.append(temp)
     return txt_data
 
+def calculate_optimal_score_of_the_method(method):
+    tss=0
+    if(method=="spherical"):
+        tss=11
+    if(method=="rosenbrock"):
+        tss=4000
+    if(method=="rastrigin"):
+        tss=45
+    if(method=="griewank"):
+        tss=1.2
+    return tss
+
 def freq_dict(sentences):
     freq_list = []
     for index,sentence in enumerate(sentences):
@@ -259,26 +271,28 @@ def main():
         #"rosenbrock"
     ]
 
-    max_iterations = [50, 100, 500]
+    max_iterations = 500
 
     all_results = []
 
     for function in functions:
-        for num_iteration in max_iterations:
-            best, best_pos, avg,score_cats = run_experiment(function, num_iteration)
-            print(f"Function={function}, Iterations={num_iteration} | best={format(best, '.10f')}, best_pos={best_pos}, avg={format(avg, '.10f')}")
-            ind=0
+        # for num_iteration in max_iterations:
+        num_iteration=max_iterations
+        best, best_pos, avg,score_cats = run_experiment(function, num_iteration)
+        print(f"Function={function}, Iterations={num_iteration} | best={format(best, '.10f')}, best_pos={best_pos}, avg={format(avg, '.10f')}")
+        ind=0
 
-            all_results.append([
-                function,
-                num_iteration,
-                best,
-                best_pos,
-                avg
-            ])
+        all_results.append([
+            function,
+            num_iteration,
+            best,
+            best_pos,
+            avg
+        ])
 
 
             
+    sss=calculate_optimal_score_of_the_method(functions[0])
     
     #print(type(score_cats))
 
@@ -290,8 +304,9 @@ def main():
     
     ind=0
     ans="" 
+    
     for s,v in score_cats.items():
-            if(v>11):
+            if(v>sss):
                 ans+=(sentences[ind])
                 ans+="."
 
